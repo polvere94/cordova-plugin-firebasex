@@ -138,9 +138,9 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
                 if(data.containsKey("notification_android_visibility")) visibility = data.get("notification_android_visibility");
                 if(data.containsKey("notification_android_priority")) priority = data.get("notification_android_priority");
 
-                //Data
-                if(data.containsKey("data_title")) title = data.get("data_title");
-                if(data.containsKey("data_body")) title = data.get("data_body");
+                //Check if title and body are in data
+                if(TextUtils.isEmpty(title) && data.containsKey("title")) title = data.get("title");
+                if(TextUtils.isEmpty(body) && data.containsKey("body")) body = data.get("body");
 
             }
 
@@ -165,7 +165,7 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
 
 
             if ((data != null && !data.isEmpty())) {
-                boolean showNotification = (FirebasePlugin.inBackground() || !FirebasePlugin.hasNotificationsCallback() || foregroundNotification);
+                boolean showNotification = (FirebasePlugin.inBackground() || !FirebasePlugin.hasNotificationsCallback() || foregroundNotification && (!TextUtils.isEmpty(body) || !TextUtils.isEmpty(title)));
                 sendMessage(remoteMessage, data, messageType, id, title, body, showNotification, sound, vibrate, light, color, icon, channelId, priority, visibility);
             }
         }catch (Exception e){
