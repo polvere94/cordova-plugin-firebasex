@@ -165,7 +165,7 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
 
 
             if ((data != null && !data.isEmpty())) {
-                boolean showNotification = (FirebasePlugin.inBackground() || !FirebasePlugin.hasNotificationsCallback() || foregroundNotification));
+                boolean showNotification = (FirebasePlugin.inBackground() || !FirebasePlugin.hasNotificationsCallback() || foregroundNotification);
                 sendMessage(remoteMessage, data, messageType, id, title, body, showNotification, sound, vibrate, light, color, icon, channelId, priority, visibility);
             }
         }catch (Exception e){
