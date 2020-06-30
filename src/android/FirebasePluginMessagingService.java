@@ -140,6 +140,7 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
 
                 //Check if title and body are in data
                 if(TextUtils.isEmpty(title) && data.containsKey("title")) title = data.get("title");
+                if(TextUtils.isEmpty(title) && data.containsKey("message")) title = data.get("message");
                 if(TextUtils.isEmpty(body) && data.containsKey("body")) body = data.get("body");
 
             }
