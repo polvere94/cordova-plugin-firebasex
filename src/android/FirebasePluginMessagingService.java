@@ -143,6 +143,12 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
                 if(TextUtils.isEmpty(title) && data.containsKey("message")) title = data.get("message");
                 if(TextUtils.isEmpty(body) && data.containsKey("body")) body = data.get("body");
 
+                if(data.containsKey('talkjs')){
+                    if(TextUtils.isEmpty(title) && data.containsKey("message")) title = data.get("message");
+                }
+
+
+
             }
 
             if (TextUtils.isEmpty(id)) {
